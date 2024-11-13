@@ -42,7 +42,7 @@ git commit -m "message"
 git log --oneline
 
 git diff    (check diff working directory - staging area)
-git diif --staged <ใส่ id จาก git log --oneline >   (check diff staging area - local repo)
+git diff --staged <ใส่ id จาก git log --oneline >   (check diff staging area - local repo)
 
 git commit --amend  (edit commit message from the most recent commit)
 
