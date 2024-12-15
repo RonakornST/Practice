@@ -33,17 +33,17 @@ cs-dlp -ca {CAUTH_TOKEN} --format "{FILE_FORMATS}" YOUR_COURSE_NAME
 ### Parameters:
 - **`{CAUTH_TOKEN}`**: Obtain this from your browser's developer tools (explained below).
 - **`{FILE_FORMATS}`**: Specify the types of files you want to download (e.g., `mp4`, `pdf`, `pptx`, etc.).
-- **`YOUR_COURSE_NAME`**: Extract this from the course URL (explained below).
+- **`{YOUR_COURSE_NAME}`**: Extract this from the course URL (explained below).
 
 ---
 
-### How to Get Your CAUTH Token
+### How to Get Your {CAUTH Token}
 1. Open the course website in your browser.
 2. Use Developer Tools to copy the `CAUTH` token (refer to this video at 2:22 for guidance: [Video Link](https://www.youtube.com/watch?v=fDCln4C0zbI&t=64s)).
 
 ---
 
-### How to Find YOUR_COURSE_NAME
+### How to Find {YOUR_COURSE_NAME}
 1. Look at the course URL. For example:
    ```
    https://www.coursera.org/programs/program-8-wchpm/learn/battery-management-systems?authProvider=chulalongkorn-faculty-of-engineering&specialization=algorithms-for-battery-management-systems
