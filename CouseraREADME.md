@@ -27,7 +27,7 @@ Follow these steps to install `cs-dlp`:
 The basic command format is:
 
 ```bash
-cs-dlp -ca {CAUTH_TOKEN} --format "{FILE_FORMATS}" YOUR_COURSE_NAME
+cs-dlp -ca {CAUTH_TOKEN} --format "{FILE_FORMATS}" {YOUR_COURSE_NAME}
 ```
 
 ### Parameters:
