@@ -1,0 +1,154 @@
+git init
+git commit -m "initial version"
+git config --list
+git config --global color.ui "auto"
+git config --global core.editor "code --wait"
+git config --global core.editor "vim"
+
+git config --global user.name "RonakornST"
+git config --global user.email "ultraronnakorn@gmail.com"
+
+
+
+code ~/.bashrc
+add these line in bashrc
+-------------------------------------------------------------------------------
+####### OPTION 1 fail DO NOT USE
+# Function to display the current Git branch in the prompt
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+# Update the PS1 prompt to always reflect the current Git branch
+export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]\$ "
+
+-------------------------------------------------------------------------------
+# Function to show the current Git branch only if inside a Git repo
+parse_git_branch() {
+    if git rev-parse --is-inside-work-tree &>/dev/null; then
+        echo "($(git symbolic-ref --short HEAD 2>/dev/null))"
+    fi
+}
+
+# Set the PS1 prompt with color and branch detection
+export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[91m\]\$(parse_git_branch)\[\033[00m\]\$ "
+-------------------------------------------------------------------------------
+source ~/.bashrc
+
+
+
+
+git status
+git add .
+git commit -m "message"
+
+git log --oneline
+
+git diff    (check diff working directory - staging area)
+git diff --staged <ใส่ id จาก git log --oneline >   (check diff staging area - local repo)
+
+git commit --amend  (edit commit message from the most recent commit)
+
+git checkout HEAD~1 demo.txt  (revert file to the second recent commit)
+git checkout <version code from git log --oneline > <file name> (revert file to desire version of commit)
+
+git rm a.txt (rm file from working directory and staging area)
+git rm --cached a.txt (rm file from staging area only)
+git ls-files --stage (list all file in staging area)
+ls -lrt (list all file in working directory with permission and datetime)
+
+
+git add -f c.txt (add file .txt type that is a type that in .gitignore)
+
+git mv <old file name>  <new file name> (rename file in git)
+
+
+https://dev.to/shafia/support-for-password-authentication-was-removed-please-use-a-personal-access-token-instead-4nbk
+for git push ,pull etc.
+git push origin master
+git pull origin master (use to pull data from remote repo, also do it when there are conflicts and can't push to remote repo,)
+
+####### solve conflict between remote and local repo and push to remote
+---------------------------------------------------------------------------------------------------------------------
+
+ronakorn@Ronakorn-Zenbook:~/practice/git_practice$ git pull origin master
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (4/4), 1.14 KiB | 1.14 MiB/s, done.
+From https://github.com/RonakornST/Practice
+ * branch            master     -> FETCH_HEAD
+   930b1bc..ee6d6f6  master     -> origin/master
+hint: You have divergent branches and need to specify how to reconcile them.
+hint: You can do so by running one of the following commands sometime before
+hint: your next pull:
+hint: 
+hint:   git config pull.rebase false  # merge (the default strategy)
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint: 
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+
+ronakorn@Ronakorn-Zenbook:~/practice/git_practice$ git config pull.rebase false
+
+ronakorn@Ronakorn-Zenbook:~/practice/git_practice$ git pull origin master
+From https://github.com/RonakornST/Practice
+ * branch            master     -> FETCH_HEAD
+Auto-merging git_practice/index.html
+CONFLICT (content): Merge conflict in git_practice/index.html
+Automatic merge failed; fix conflicts and then commit the result.
+ronakorn@Ronakorn-Zenbook:~/practice/git_practice$ vim index.html 
+ronakorn@Ronakorn-Zenbook:~/practice/git_practice$ git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+ronakorn@Ronakorn-Zenbook:~/practice/git_practice$ vim index.html  (edit file manually to solve  conflict)
+
+ronakorn@Ronakorn-Zenbook:~/practice/git_practice$ git add .
+
+ronakorn@Ronakorn-Zenbook:~/practice/git_practice$ git commit -m "merge conflict by comment one line and use another"
+[master 8c8c2f2] merge conflict by comment one line and use another
+
+ronakorn@Ronakorn-Zenbook:~/practice/git_practice$ git push origin master
+Username for 'https://github.com': RonakornST
+Password for 'https://RonakornST@github.com': 
+Enumerating objects: 14, done.
+Counting objects: 100% (14/14), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (8/8), 780 bytes | 780.00 KiB/s, done.
+Total 8 (delta 4), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (4/4), completed with 2 local objects.
+To https://github.com/RonakornST/Practice.git
+   ee6d6f6..8c8c2f2  master -> master
+------------------------------------------------------------------------------------------------
+
+git branch (list all branch)
+
+git branch <branch name> (create new branch)
+
+git checkout -b <branch name>  (create branch and switch to that branch)
+
+git checkout <branch name> (move to that branch)
+
+git log --oneline --decorate --graph (git log with git graph)
+
+git merge feature1  (take code from feature1 branch and merge it in to the current branch)
+
+
+
+
+
+
+
