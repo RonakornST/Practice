@@ -2,7 +2,7 @@ Here’s a **`README.md`** template that contains all the steps and commands you
 
 ---
 
-```markdown
+
 # Zsh Configuration Setup
 
 This README contains all the steps and commands used to install and configure **Oh My Zsh**, enable plugins, and troubleshoot `zsh-autosuggestions` and `zsh-syntax-highlighting`.
