@@ -45,6 +45,9 @@ If the `zsh-autosuggestions` plugin does not work after configuring the `plugins
 ```bash
 source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ```
+```
+echo "source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc\nsource ~/.zshrc\n
+```
 
 ## 5. Reload Zsh Configuration
 To apply the changes:
